@@ -15,6 +15,17 @@ public class NauJugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MovimentNau();
+
+        DispararBala();
+
+
+
+
+
+    }
+    private void MovimentNau()
+    {
         float direccioHoritzontal = Input.GetAxisRaw("Horizontal");
         float direccioVertical = Input.GetAxisRaw("Vertical");
         //Debug.Log("direcioHoritzontal=" + direcioHoritzontal);
@@ -36,18 +47,16 @@ public class NauJugador : MonoBehaviour
 
         novaPos.x = Mathf.Clamp(novaPos.x, limitEsquerra, limitDreta);
         novaPos.y = Mathf.Clamp(novaPos.y, limitInferior, limitSuperior);
-   
 
-        if (Input.GetKeyDown(KeyCode.Space))  {
-            shoot();
-            transform.position = novaPos;
-        }
         transform.position = novaPos;
     }
 
-    private void shoot()
+    private void DispararBala()
     {
-        GameObject bala = Instantiate(Resources.Load("Prefabs/bullets_1") as GameObject);
-        bala.transform.position = this.transform.position;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {         
+            GameObject bala = Instantiate(Resources.Load("Prefabs/bullets_1") as GameObject);
+            bala.transform.position = this.transform.position;
+        }
     }
 }
