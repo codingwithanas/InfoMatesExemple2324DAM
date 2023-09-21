@@ -9,7 +9,7 @@ public class NauJugador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _velNau = 5f;
+        _velNau = 7f;
     }
 
     // Update is called once per frame
@@ -31,6 +31,8 @@ public class NauJugador : MonoBehaviour
         //Debug.Log("direcioHoritzontal=" + direcioHoritzontal);
 
         Vector2 direccioIndicada = new Vector2(direccioHoritzontal, direccioVertical).normalized;
+
+        //T Trobar limits pantalla
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
         float anchura = spriteRenderer.bounds.size.x / 2;
@@ -41,6 +43,7 @@ public class NauJugador : MonoBehaviour
         float limitInferior = -Camera.main.orthographicSize + altura;
         float limitSuperior = Camera.main.orthographicSize - altura;
 
+        // Moure nau
         Vector2 novaPos = transform.position; // Ens retorna la posisció actual de la nau.
         novaPos += direccioIndicada * _velNau * Time.deltaTime;
 
