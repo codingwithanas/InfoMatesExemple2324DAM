@@ -37,6 +37,7 @@ public class Numero : MonoBehaviour
         // El valor de objecteTocat, serà l'objecte que hem tocat (per exemple, un número).
         if (objecteTocat.tag == "Bala" || objecteTocat.tag == "NauJugador")
         {
+            GameObject.Find("NumText").GetComponent<NumText>().AfegirNum(_valorNumero);
             Destroy(gameObject);
         }
     }

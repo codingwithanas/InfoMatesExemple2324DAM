@@ -35,7 +35,10 @@ public class NauJugador : MonoBehaviour
         {
             GameObject explosio = Instantiate(_PreFabExplosio);
             explosio.transform.position = transform.position;
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            GameObject.Find("GameManager")
+                .GetComponent<GameManager>()
+                .SetEstatGameManager(GameManager.EstatsGameManager.GameOver);
         }
     }
     private void MovimentNau()
